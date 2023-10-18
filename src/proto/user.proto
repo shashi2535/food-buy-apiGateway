@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service UserService {
+    rpc userSignup (SignupRequest) returns (Response) {};
+}
+
+message Error {
+    optional string message = 1;
+    optional string code = 2;
+}
+
+message Response {
+    optional Error error = 1;
+}
+
+message SignupRequest{
+  int32 id=1;
+  string email=2;
+  string password=3;
+  string phone=4;
+  string createdAt = 5;
+}

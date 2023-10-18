@@ -1,0 +1,86 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Food-Buy",
+      "description": "Food-Buy is a platform where you can diliver food"
+    },
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "servers": [
+      {
+        "url": "http://localhost:8000",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/v1/register": {
+        "post": {
+          "tags": ["User"],
+          "summary": "User register",
+          "parameters": [
+            {
+              "name": "locale",
+              "in": "header",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "requestBody": {
+            "description": "register Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/register"
+                }
+              }
+            }
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "id": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      "register": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "Test User"
+          },
+          "email": {
+            "type": "string",
+            "example": "test@yopmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456"
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "ApiKeyAuth": {
+          "description": "Enter Authorization",
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    }
+  }
+  
