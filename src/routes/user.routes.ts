@@ -1,11 +1,11 @@
-import { Router } from "express";
-import { container, injectable } from "tsyringe";
-import {AuthContoller} from "../controller"
-import {AuthValidations} from "../validation"
-import {Routes} from "../interface"
+import { Router } from 'express';
+import { container, injectable } from 'tsyringe';
+import {AuthContoller} from '../controller';
+import {AuthValidations} from '../validation';
+import {Routes} from '../interface';
 @injectable()
 class Route implements Routes {
-  public path = `/`;
+  public path = '/';
   public router = Router();
 
   constructor(
