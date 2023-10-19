@@ -5,8 +5,7 @@ import Joi from 'joi';
 export class AuthValidations extends BaseValidation {
   public signUp = this.validateRequest(
     Joi.object({
-      firstName: Joi.string().required(),
-      lastName: Joi.string().required(),
+      name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).max(20).required(),
     })

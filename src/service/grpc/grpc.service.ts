@@ -45,7 +45,7 @@ export class GrpcInitiate {
 
   initiateConnection = () => {
     this.metadata.set('x-service', this.serviceName);
-    if (process.env.NODE_ENV !== 'test')
+    if (process.env.NODE_ENV === 'development')
       this.client = new this.service(
         this.getConnection(),
         grpc.credentials.createInsecure()

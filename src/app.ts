@@ -7,6 +7,7 @@ import {Routes} from './interface';
 import {AuthRoute} from './routes';
 import swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from './docs/swagger.json';
+import { logger } from './config/logger';
 export class Application {
   public app: express.Application;
   private port: number;
@@ -59,7 +60,7 @@ export class Application {
   
   private listen(): void {
     this.app.listen(this.port, () => {
-      console.log(`🚀 App listening on the port ${this.port} ENV: ${this.env} mode...`);
+      logger.info(`🚀 App listening on the port ${this.port} ENV: ${this.env} mode...`);
     });
   }
 }

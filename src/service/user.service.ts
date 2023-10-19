@@ -7,14 +7,13 @@ class UserGrpcService {
   constructor() {
     this.grpc = new GrpcInitiate(
       proto_path,
-      'UserService',
+      'IUserService',
       serviceName,
       process.env.GRPC_USER_URL as string
     );
   }
-
   userSignup = (request: any): Promise<any> => {
-    return this.grpc.handleClientMethod(request, 'userSignup');
+    return this.grpc.handleClientMethod(request, 'signup');
   };
 }
 
