@@ -11,7 +11,7 @@ export class Application {
   public app: express.Application;
   private port: number;
   private env: string;
-  
+
   constructor() {
     this.app = express();
     this.port = configs.PORT;
@@ -59,11 +59,9 @@ export class Application {
   
   private listen(): void {
     this.app.listen(this.port, () => {
-      // eslint-disable-next-line no-console
       console.log(`🚀 App listening on the port ${this.port} ENV: ${this.env} mode...`);
     });
   }
 }
-  
+
 export const ApplicationInstance = new Application();
-  

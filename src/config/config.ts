@@ -1,9 +1,13 @@
-import {NODE_ENV_ENUM} from '../constant';
-import {config } from 'dotenv';
+import { NODE_ENV_ENUM } from '../constant';
+import { config } from 'dotenv';
 import { getEnv } from '../utils';
-const NODE_ENV = process.env.NODE_ENV == NODE_ENV_ENUM.Development ? NODE_ENV_ENUM.Development:NODE_ENV_ENUM.Production;
+const NODE_ENV =
+  process.env.NODE_ENV == NODE_ENV_ENUM.Development || !process.env.NODE_ENV
+    ? NODE_ENV_ENUM.Development
+    : NODE_ENV_ENUM.Production;
+
 config({
-  path: `.env.${NODE_ENV }`
+  path: `.env.${NODE_ENV}`,
 });
 export const configs = {
   PORT: +getEnv('PORT'),

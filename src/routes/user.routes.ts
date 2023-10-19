@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import { container, injectable } from 'tsyringe';
-import {AuthContoller} from '../controller';
-import {AuthValidations} from '../validation';
-import {Routes} from '../interface';
+import { AuthController } from '../controller';
+import { AuthValidations } from '../validation';
+import { Routes } from '../interface';
 @injectable()
 class Route implements Routes {
   public path = '/';
   public router = Router();
 
   constructor(
-    private readonly authController: AuthContoller,
+    private readonly authController: AuthController,
     private readonly authValidation: AuthValidations
   ) {
     this.initializeRoutes();
@@ -17,13 +17,7 @@ class Route implements Routes {
 
   private initializeRoutes(): void {
     // Sign Up Route
-    this.router.post(
-      `${this.path}signup`,
-      this.authValidation.signUp,
-      this.authController.signup
-    );
-
-
+    this.router.post(`${this.path}signup`, this.authValidation.signUp, this.authController.signup);
   }
 }
 
