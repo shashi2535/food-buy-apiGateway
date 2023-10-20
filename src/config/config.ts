@@ -1,24 +1,24 @@
-import { NODE_ENV_ENUM } from '../constant';
+import { NODE_ENV } from '../constant';
 import { config } from 'dotenv';
 import { getEnv } from '../utils';
-const NODE_ENV =
-  process.env.NODE_ENV == NODE_ENV_ENUM.Development || !process.env.NODE_ENV
-    ? NODE_ENV_ENUM.Development
-    : NODE_ENV_ENUM.Production;
+
+process.env.NODE_ENV = NODE_ENV.DEVELOPMENT || !process.env.NODE_ENV ? NODE_ENV.DEVELOPMENT : NODE_ENV.PRODUCTION;
 
 config({
-  path: `.env.${NODE_ENV}`,
+  path: `.env.${process.env.NODE_ENV}`,
 });
+
 export const configs = {
   PORT: +getEnv('PORT'),
   CORS: {
     ORIGIN: '*',
     CREDENTIALS: true,
   },
-  NODE_ENV,
+  NODE_ENV: <string>process.env.NODE_ENV,
   SALT_ROUND: 10,
   JWT: {
     SECRET: getEnv('JWT_SECRET'),
     EXPIRES_IN: getEnv('JWT_EXPIRES_IN'),
   },
+  ORDER_SERVICE_URL: <string>getEnv('ORDER_SERVICE_URL'),
 };

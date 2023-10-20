@@ -28,7 +28,7 @@ export class RabbitMqService {
           console.log('****************** RABBIT_MQ CONNECTION closed ******************************');
         });
       }
-      let obj: any = {
+      const obj = {
         connection: this.connection,
         channel: this.channel,
       };

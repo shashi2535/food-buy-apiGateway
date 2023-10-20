@@ -1,27 +1,22 @@
 import winston, { format, addColors, createLogger } from 'winston';
+import { LOGGER } from '../constant';
+import { getLogMessage } from '../utils';
 const { combine, timestamp, printf, colorize, simple } = format;
+
 const logger = createLogger({
   transports: [
     new winston.transports.Console({
       format: combine(
         timestamp({
-          format: 'YYYY-MM-DD HH:mm:ss',
+          format: LOGGER.FORMAT,
         }),
         simple(),
-        printf(
-          (info) =>
-            `${info.timestamp} ${info.level}: ${info.message}` + (info.splat !== undefined ? `${info.splat}` : ' ')
-        ),
+        printf(getLogMessage),
         colorize({ all: true })
       ),
     }),
   ],
 });
-addColors({
-  error: 'red',
-  warn: 'pink',
-  info: 'yellow',
-  debug: 'blue',
-});
+addColors(LOGGER.COLORS);
 
 export { logger };

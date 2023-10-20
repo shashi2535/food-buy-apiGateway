@@ -1,5 +1,5 @@
-
-export enum NODE_ENV_ENUM {
-    Development = 'development',
-    Production = 'production',
-  }
+export enum NODE_ENV {
+  DEVELOPMENT = 'development',
+  PRODUCTION = 'production',
+  TEST = 'test',
+}

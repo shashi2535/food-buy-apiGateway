@@ -3,9 +3,11 @@ import { container, injectable } from 'tsyringe';
 import { AuthController } from '../controller';
 import { AuthValidations } from '../validation';
 import { Routes } from '../interface';
+import { RoutesConstants } from '../constant';
+
 @injectable()
 class Route implements Routes {
-  public path = '/';
+  public path = RoutesConstants.ROOT;
   public router = Router();
 
   constructor(
@@ -17,7 +19,7 @@ class Route implements Routes {
 
   private initializeRoutes(): void {
     // Sign Up Route
-    this.router.post(`${this.path}signup`, this.authValidation.signUp, this.authController.signup);
+    this.router.post(`${this.path}register`, this.authValidation.signUp, this.authController.registerUser);
   }
 }
 

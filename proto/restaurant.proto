@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package restaurant;
+
+service RestaurantService {
+    rpc checkHealth (Empty) returns (Response) {};
+    rpc createRestaurant(CreateRestaurantReq) returns (Empty) {};
+}
+
+message Empty {}
+
+message Response {
+    string message = 1;
+    bool status = 2; 
+}
+
+message CreateRestaurantReq {
+    string name = 1;
+} 
