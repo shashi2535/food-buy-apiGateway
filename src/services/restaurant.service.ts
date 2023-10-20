@@ -1,7 +1,6 @@
 import { injectable } from 'tsyringe';
-import { SERVICES } from '../constant';
+import { SERVICES, GRPC_PORTS, PACKAGE_NAMES, RESTAURANT_METHODS } from '../constant';
 import { GrpcInitiate } from '../helper';
-import { GRPC_PORTS, PACKAGE_NAMES, RESTAURANT_METHODS } from '../constant';
 
 @injectable()
 export class RestaurantGrpcService {
