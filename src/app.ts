@@ -9,6 +9,7 @@ import { RoutesConstants } from './constant';
 import { Routes } from './interface';
 import { AuthRoute } from './routes';
 import * as swaggerDocument from './docs/swagger.json';
+import { errorMiddleware } from './middleware';
 
 @injectable()
 export class Application {
@@ -60,7 +61,7 @@ export class Application {
     this.app.all(RoutesConstants.NOT_FOUND, (req: Request, res: Response) => {
       return res.json({ message: `Can't find ${req?.url} on this server!` });
     });
-    // this.app.use(errorMiddleware);
+    this.app.use(errorMiddleware);
   }
 
   private listen(): void {
