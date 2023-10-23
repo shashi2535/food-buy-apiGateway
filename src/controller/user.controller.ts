@@ -11,8 +11,11 @@ export class AuthController {
 
   public registerUser: RequestHandler = async (req, res) => {
     try {
-      const data = await userService.registerUser(req);
-      logger.info('signup function', data);
+      const data = await userService.registerUser(req.body);
+      return res.json({
+        status:data.status,
+        message:data.message
+      });
     } catch (err: unknown) {
       logger.error('AuthController:: registerUser', err);
       return res.json({
