@@ -9,13 +9,67 @@ export class AuthController {
 
   public registerUser: RequestHandler = async (req, res, next) => {
     try {
-      const data = await userService.registerUser(req.body);
-      return res.json({
-        status:data.status,
-        message:data.message
-      });
+      const data = await userService.registerSeller(req.body);
+      if(data.status === true){
+        this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
+        return res.json({
+          status:data.status,
+          message:data.message
+        });
+      }else{
+        return res.json({
+          status:data.status,
+          message:data.message
+        });
+      }
     } catch (err: unknown) {
       logger.error('AuthController:: registerUser', err);
+      next(err);
+    }
+  };
+
+  public verifyOtp:RequestHandler = async(req, res, next)=>{
+    try{
+      req.body.type = 'email';
+      const data = await userService.verifyOtp(req.body);
+      return res.json({...data});
+    } catch (err: unknown) {
+      logger.error('AuthController:: verifyOtp', err);
+      next(err);
+    }
+  };
+ 
+  public resendTokenOnMail:RequestHandler = async(req, res, next)=>{
+    try{
+      req.params.type = 'email';
+      const data = await userService.resendOtp(req.params);
+      if(data.status === true){
+        this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
+        return res.json({
+          status:data.status,
+          message:data.message
+        });
+      }else{
+        return res.json({
+          status:data.status,
+          message:data.message
+        });
+      }
+    }catch (err: unknown) {
+      logger.error('AuthController:: verifyOtp', err);
+      next(err);
+    }
+  };
+  public loginOwner:RequestHandler = async(req, res, next)=>{
+    try{
+      console.log('in login controller');
+      const data = await userService.loginOwner(null);
+      return res.json({
+        ...data
+      });
+      console.log('data', data);
+    }catch (err: unknown) {
+      logger.error('AuthController:: verifyOtp', err);
       next(err);
     }
   };

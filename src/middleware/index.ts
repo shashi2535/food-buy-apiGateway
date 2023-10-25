@@ -8,3 +8,11 @@ export const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
     data: null,
   });
 };
+
+
+export const assignRole =(allowedRoles:string)=> {
+  return (req:any, res:any, next:any) => {
+    req.body.role = allowedRoles;
+    next();
+  };
+};

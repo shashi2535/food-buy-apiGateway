@@ -4,10 +4,11 @@ import { AuthController } from '../controller';
 import { AuthValidations } from '../validation';
 import { Routes } from '../interface';
 import { RoutesConstants } from '../constant';
+import { assignRole } from '../middleware';
 
 @injectable()
 class Route implements Routes {
-  public path = RoutesConstants.ROOT;
+  public path = '/';
   public router = Router();
 
   constructor(
@@ -19,7 +20,10 @@ class Route implements Routes {
 
   private initializeRoutes(): void {
     // Sign Up Route
-    this.router.post(`${this.path}register`, this.authValidation.signUp, this.authController.registerUser);
+    this.router.post(`${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.SIGNUP}`, this.authValidation.signUp, assignRole('owner'), this.authController.registerUser);
+    this.router.post( `${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.VERIFY_OTP}`, this.authValidation.verifyOtp, this.authController.verifyOtp);
+    this.router.patch( `${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.RESEND_OTP}`,this.authController.resendTokenOnMail);
+    this.router.post(`${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.LOGIN}`, this.authValidation.loginOwner, this.authController.loginOwner);
   }
 }
 

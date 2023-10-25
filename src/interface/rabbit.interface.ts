@@ -17,7 +17,7 @@ export enum RabbitQueues {
 
 export enum RabbitActions {
   CONFIG_UPDATE = 'CONFIG_UPDATE',
-  REGISTER = 'REGISTER',
+  REGISTER = 'USER_REGISTER',
 }
 
 export interface RabbitContent {

@@ -7,7 +7,17 @@ export class AuthValidations extends BaseValidation {
     Joi.object({
       name: Joi.string().required(),
       email: Joi.string().email().required(),
-      password: Joi.string().min(6).max(20).required(),
+    })
+  );
+  public verifyOtp = this.validateRequest(
+    Joi.object({
+      otp: Joi.string().length(6).required(),
+    })
+  );
+  public loginOwner = this.validateRequest(
+    Joi.object({
+      name: Joi.string().required(),
+      email: Joi.string().email().required(),
     })
   );
 }

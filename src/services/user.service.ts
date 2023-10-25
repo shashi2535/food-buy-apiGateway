@@ -15,8 +15,17 @@ export class UserGrpcService {
     return this.grpc.handleClientMethod(request, USER_METHODS.CHECK_HEALTH);
   }
 
-  registerUser = (request: any): Promise<any> => {
+  registerSeller = (request: any): Promise<any> => {
     return this.grpc.handleClientMethod(request, USER_METHODS.REGISTER_USER);
+  };
+  verifyOtp = (request: any): Promise<any> => {
+    return this.grpc.handleClientMethod(request, USER_METHODS.VERIFY_OTP);
+  };
+  resendOtp =  (request: any): Promise<any> => {
+    return this.grpc.handleClientMethod(request, USER_METHODS.RESEND_OTP);
+  };
+  loginOwner =  (request: any): Promise<any> => {
+    return this.grpc.handleClientMethod(request, USER_METHODS.LOGIN_OWNER);
   };
 }
 
