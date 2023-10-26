@@ -12,7 +12,7 @@ export class RabbitMqService {
     try {
       if (!this.connection) {
         // Create a new connection For RabbitMq server
-        this.connection = await amqp.connect('amqp://localhost:5672');
+        this.connection = await amqp.connect(`${process.env.REBBIT_MQ_URL}`);
         this.channel = await this.connection.createConfirmChannel();
 
         this.connection.on('error', (err: any) => {
