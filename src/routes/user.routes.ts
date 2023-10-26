@@ -22,7 +22,7 @@ class Route implements Routes {
     // Sign Up Route
     this.router.post(`${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.SIGNUP}`, this.authValidation.signUp, assignRole('owner'), this.authController.registerUser);
     this.router.post( `${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.VERIFY_OTP}`, this.authValidation.verifyOtp, this.authController.verifyOtp);
-    this.router.patch( `${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.RESEND_OTP}`,this.authController.resendTokenOnMail);
+    this.router.post( `${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.RESEND_OTP}`,  this.authValidation.resendTokenOnEmail, this.authController.resendTokenOnMail);
     this.router.post(`${this.path}${RoutesConstants.SELER_AUTH.DEFAULT}/${RoutesConstants.SELER_AUTH.LOGIN}`, this.authValidation.loginOwner, this.authController.loginOwner);
   }
 }

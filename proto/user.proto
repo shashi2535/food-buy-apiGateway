@@ -37,7 +37,7 @@ message RegisterUserRes{
   optional  RegisterUserData result =3;
 }
 message verifyOtpReq{
-  optional string type=1;
+  optional string email=1;
   optional string otp=2;
 }
 message verifyOtpData{
@@ -51,7 +51,7 @@ message verifyOtpRes{
 
 message resendOtpReq{
   optional string type=1;
-  optional string id=2;
+  optional string email=2;
 }
 
 

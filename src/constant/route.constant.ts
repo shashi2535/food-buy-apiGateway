@@ -8,7 +8,7 @@ export const RoutesConstants = {
     LOGIN: 'login',
     SIGNUP: 'signup',
     VERIFY_OTP:'verifyOtp',
-    RESEND_OTP:'resendOtp/:id'
+    RESEND_OTP:'resendOtp'
   },
   USER_AUTH:{
     DEFAULT: 'user',

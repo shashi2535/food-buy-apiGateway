@@ -30,7 +30,6 @@ export class AuthController {
 
   public verifyOtp:RequestHandler = async(req, res, next)=>{
     try{
-      req.body.type = 'email';
       const data = await userService.verifyOtp(req.body);
       return res.json({...data});
     } catch (err: unknown) {
@@ -41,8 +40,8 @@ export class AuthController {
  
   public resendTokenOnMail:RequestHandler = async(req, res, next)=>{
     try{
-      req.params.type = 'email';
-      const data = await userService.resendOtp(req.params);
+      req.body.type = 'email';
+      const data = await userService.resendOtp(req.body);
       if(data.status === true){
         this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
         return res.json({

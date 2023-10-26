@@ -12,11 +12,17 @@ export class AuthValidations extends BaseValidation {
   public verifyOtp = this.validateRequest(
     Joi.object({
       otp: Joi.string().length(6).required(),
+      email: Joi.string().email().required()
     })
   );
   public loginOwner = this.validateRequest(
     Joi.object({
       name: Joi.string().required(),
+      email: Joi.string().email().required(),
+    })
+  );
+  public resendTokenOnEmail = this.validateRequest(
+    Joi.object({
       email: Joi.string().email().required(),
     })
   );
