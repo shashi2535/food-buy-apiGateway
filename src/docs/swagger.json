@@ -14,18 +14,11 @@
       }
     ],
     "paths": {
-      "/v1/register": {
+      "/owner/signup": {
         "post": {
           "tags": ["User"],
           "summary": "User register",
-          "parameters": [
-            {
-              "name": "locale",
-              "in": "header",
-              "required": true,
-              "type": "string"
-            }
-          ],
+          "parameters": [],
           "requestBody": {
             "description": "register Object",
             "required": true,
@@ -33,6 +26,78 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/definitions/register"
+                }
+              }
+            }
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/owner/verifyOtp": {
+        "post": {
+          "tags": ["User"],
+          "summary": "Otp Verification through email",
+          "parameters": [],
+          "requestBody": {
+            "description": "otp verification Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/verifyOtp"
+                }
+              }
+            }
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/owner/resendOtp": {
+        "post": {
+          "tags": ["User"],
+          "summary": "resend Otp on email",
+          "parameters": [],
+          "requestBody": {
+            "description": "resend Otp Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/resendOtp"
+                }
+              }
+            }
+          },
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/owner/login": {
+        "post": {
+          "tags": ["User"],
+          "summary": "user login",
+          "parameters": [],
+          "requestBody": {
+            "description": "login Object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/login"
                 }
               }
             }
@@ -57,17 +122,48 @@
       "register": {
         "type": "object",
         "properties": {
-          "fullName": {
+          "name": {
             "type": "string",
             "example": "Test User"
           },
           "email": {
             "type": "string",
             "example": "test@yopmail.com"
-          },
-          "password": {
+          }
+        }
+      },
+      "verifyOtp": {
+        "type": "object",
+        "properties": {
+          "otp": {
             "type": "string",
-            "example": "123456"
+            "example": "Test User"
+          },
+          "email": {
+            "type": "string",
+            "example": "test@yopmail.com"
+          }
+        }
+      },
+      "resendOtp": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test@yopmail.com"
+          }
+        }
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test@yopmail.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "test@yopmail.com"
           }
         }
       }

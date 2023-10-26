@@ -10,7 +10,6 @@ export class UserGrpcService {
   constructor() {
     this.grpc = new GrpcInitiate(this.proto_path, PACKAGE_NAMES.USER, SERVICES.USER_SERVICE, GRPC_PORTS.USER_SERVICE);
   }
-
   checkHealth(request = {}) {
     return this.grpc.handleClientMethod(request, USER_METHODS.CHECK_HEALTH);
   }

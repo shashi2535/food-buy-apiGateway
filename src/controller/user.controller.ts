@@ -61,12 +61,17 @@ export class AuthController {
   };
   public loginOwner:RequestHandler = async(req, res, next)=>{
     try{
-      console.log('in login controller');
-      const data = await userService.loginOwner(null);
+      const data = await userService.loginOwner(req.body);
+      if(data.status === true){
+        this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
+        return res.json({
+          status:data.status,
+          message:data.message
+        });
+      }
       return res.json({
         ...data
       });
-      console.log('data', data);
     }catch (err: unknown) {
       logger.error('AuthController:: verifyOtp', err);
       next(err);

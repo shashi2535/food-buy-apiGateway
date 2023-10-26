@@ -47,6 +47,7 @@ export class GrpcInitiate {
     return new Promise((resolve, reject) => {
       this.client[method](request, this.metadata, (err: any, data: any) => {
         if (err || data.error) {
+          console.log('err',err);
           reject(err ?? data.error);
         }
         resolve(data);
