@@ -12,7 +12,7 @@ export class BaseValidation {
         return res.json({
           // eslint-disable-next-line no-useless-escape
           message:error?.details[0]?.message?.replace(new RegExp(/\"/, 'g'), ''),
-          statusCode:400
+          statusCode:422
         });
       }
       next();
