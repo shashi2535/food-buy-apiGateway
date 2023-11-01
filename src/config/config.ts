@@ -14,11 +14,11 @@ export const configs = {
     ORIGIN: '*',
     CREDENTIALS: true,
   },
-  NODE_ENV: <string>process.env.NODE_ENV,
+  NODE_ENV: process.env.NODE_ENV,
   SALT_ROUND: 10,
   JWT: {
     SECRET: getEnv('JWT_SECRET'),
     EXPIRES_IN: getEnv('JWT_EXPIRES_IN'),
   },
-  ORDER_SERVICE_URL: <string>getEnv('ORDER_SERVICE_URL'),
+  ORDER_SERVICE_URL: getEnv('ORDER_SERVICE_URL'),
 };

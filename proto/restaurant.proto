@@ -4,7 +4,7 @@ package restaurant;
 
 service RestaurantService {
     rpc checkHealth (Empty) returns (Response) {};
-    rpc createRestaurant(CreateRestaurantReq) returns (Empty) {};
+    rpc createRestaurant(RestaurantData) returns (Empty) {};
 }
 
 message Empty {}
@@ -14,6 +14,20 @@ message Response {
     bool status = 2; 
 }
 
-message CreateRestaurantReq {
+message RestaurantData {
     string name = 1;
-} 
+    string address = 2;
+    double latitude = 3;
+    double longitude = 4;
+    string country = 5;
+    string pinCode = 6;
+    string district = 7;
+    string state = 8;
+    bool exactLocation = 9;
+    string phoneNumber = 10;
+    string phoneNumberCountryCode = 11;
+    string landLine = 12;
+    string landLineCode = 13;
+    bool whatsAppNotification = 14;
+    int32 ownerId = 15;
+}

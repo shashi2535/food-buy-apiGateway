@@ -7,7 +7,7 @@ import { HealthController } from './controller';
 import cors from 'cors';
 import { RoutesConstants } from './constant';
 import { Routes } from './interface';
-import { AuthRoute } from './routes';
+import { AuthRoute, RestaurantRoutes } from './routes';
 import * as swaggerDocument from './docs/swagger.json';
 import { errorMiddleware } from './middleware';
 
@@ -53,7 +53,7 @@ export class Application {
   }
 
   private initializeRoutes(): void {
-    const routes: Routes[] = [AuthRoute];
+    const routes: Routes[] = [AuthRoute, RestaurantRoutes];
     routes?.forEach((route) => this.app.use(route?.path, route.router));
   }
 
