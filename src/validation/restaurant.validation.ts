@@ -13,10 +13,10 @@ export class RestaurantValidation extends BaseValidation {
     district: Joi.string(),
     state: Joi.string(),
     exactLocation: Joi.boolean().optional().default(false),
-    whatsAppNotification: Joi.boolean(),
+    whatsAppNotifications: Joi.boolean(),
     phoneNumber: this.phone.optional(),
     phoneNumberCountryCode: Joi.string().optional().default(COUNTRY_CODES.INDIA),
-    landLine: Joi.string().optional(),
+    landlineNumber: Joi.string().optional(),
     landLineCode: Joi.string().optional(),
   })
     .or('phoneNumber', 'landLine')

@@ -1,5 +1,6 @@
 import { SUCCESS_MESSAGES } from './../constant/messages.constants';
 import { TransformableInfo } from 'logform';
+import { IResponse } from '../interface';
 
 export const getEnv = (key: string) => {
   const envValue = process.env[key];
@@ -21,7 +22,7 @@ export function setSuccessResponse(data: unknown = null, message = SUCCESS_MESSA
   };
 }
 
-export function setErrorResponse(message = 'Error', data = null) {
+export function setErrorResponse(message = 'Error', data = null): IResponse {
   return {
     status: false,
     message,
@@ -29,7 +30,7 @@ export function setErrorResponse(message = 'Error', data = null) {
   };
 }
 
-export function setInitialResponse() {
+export function setInitialResponse(): IResponse {
   return {
     status: false,
     message: '',

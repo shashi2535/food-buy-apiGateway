@@ -5,7 +5,7 @@ export interface IRestaurant {
   isVerified?: boolean;
   phoneNumber?: string;
   phoneNumberCountryCode?: string;
-  landLine?: string;
+  landlineNumber?: string;
   landLineCode?: string;
   latitude?: number;
   longitude?: number;
@@ -15,5 +15,5 @@ export interface IRestaurant {
   country?: string;
   pinCode?: string;
   exactLocation?: boolean;
-  whatsAppNotification?: boolean;
+  whatsAppNotifications?: boolean;
 }

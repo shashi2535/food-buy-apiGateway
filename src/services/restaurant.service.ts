@@ -1,4 +1,4 @@
-import { IRestaurant } from './../interface';
+import { IResponse, IRestaurant } from './../interface';
 import { injectable } from 'tsyringe';
 import { SERVICES, GRPC_PORTS, PACKAGE_NAMES, RESTAURANT_METHODS } from '../constant';
 import { GrpcInitiate } from '../helper';
@@ -21,7 +21,7 @@ export class RestaurantGrpcService {
   }
 
   // Function to create a new restaurant
-  createRestaurant(request: IRestaurant) {
+  createRestaurant(request: IRestaurant): Promise<IResponse<{ id: number }>> {
     return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.CREATE_RESTAURANT);
   }
 }
