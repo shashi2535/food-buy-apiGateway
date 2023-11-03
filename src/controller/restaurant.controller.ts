@@ -15,12 +15,13 @@ export class RestaurantController {
 
       if (!body.phoneNumberCountryCode) body.phoneNumberCountryCode = COUNTRY_CODES.INDIA;
       if (!body.country) body.country = COUNTRY.INDIA;
+
       body.exactLocation = !!body.exactLocation;
       body.whatsAppNotifications = !!body.whatsAppNotifications;
-
       // Making grpc call to save restaurant information
-      response = await this.restaurantService.createRestaurant({ ...req.body, ownerId: user.id });
+      response = await this.restaurantService.createRestaurant({ ...req.body, ownerId: user?.id });
     } catch (err) {
+      console.log('RestaurantController::createRestaurant', (err as Error).message);
       response.message = (err as Error).message;
     }
     return res.json(response);

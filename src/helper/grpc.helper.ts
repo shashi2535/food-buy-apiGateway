@@ -46,8 +46,9 @@ export class GrpcInitiate {
   handleClientMethod = (request: any, method: string): Promise<any> => {
     return new Promise((resolve, reject) => {
       this.client[method](request, this.metadata, (err: any, data: any) => {
+        console.log('🚀 ~ file: grpc.helper.ts:49 ~ GrpcInitiate ~ returnnewPromise ~ err: any, data:', err, data);
         if (err || data.error) {
-          console.log('err',err);
+          console.log('err', err);
           reject(err ?? data.error);
         }
         resolve(data);
