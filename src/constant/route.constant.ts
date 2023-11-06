@@ -19,6 +19,8 @@ export const RoutesConstants = {
   RESTAURANT: {
     DEFAULT: '/restaurant',
     SAVE_BASIC_DETAILS: '/save-basic-details',
+    UPDATE_BASIC_DETAILS: '/update-basic-details/:id',
+    GET_BASIC_DETAILS: '/get-basic-details/:id',
   },
   NOT_FOUND: '*',
 };

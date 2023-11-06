@@ -7,13 +7,26 @@ export interface IRestaurant {
   phoneNumberCountryCode?: string;
   landlineNumber?: string;
   landLineCode?: string;
-  latitude?: number;
-  longitude?: number;
-  address?: string;
-  state?: string;
-  district?: string;
+  status?: string;
+  whatsAppNotifications?:boolean
+}
+
+export interface IAddress {
   country?: string;
+  entityId?: number;
+  entityType?: string;
+  state?: string;
+  city?: string;
+  district?: string;
+  landmark?: string;
+  address?: string;
+  latitude?: string;
+  longitude?: string;
+  buildingNumber?: string;
   pinCode?: string;
   exactLocation?: boolean;
-  whatsAppNotifications?: boolean;
+}
+
+export interface ISaveBasicDetails extends IRestaurant {
+  address?: IAddress & { id?: number };
 }

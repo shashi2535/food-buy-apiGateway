@@ -5,6 +5,8 @@ package restaurant;
 service RestaurantService {
     rpc checkHealth (Empty) returns (Response) {};
     rpc createRestaurant(RestaurantData) returns (CreateRestaurantRes) {};
+    rpc updateBasicDetails(UpdateBasicDetailsReq) returns (Response) {};
+    rpc getRestaurantBasicDetails(GetRestaurantBasicDetailsReq) returns (GetRestaurantBasicDetailsRes) {};
 }
 
 message Empty {}
@@ -14,8 +16,8 @@ message Response {
     required bool status = 2; 
 }
 
-message RestaurantData {
-    string name = 1;
+message Address {
+    bool exactLocation = 1;
     string address = 2;
     double latitude = 3;
     double longitude = 4;
@@ -23,13 +25,36 @@ message RestaurantData {
     string pinCode = 6;
     string district = 7;
     string state = 8;
-    bool exactLocation = 9;
-    string phoneNumber = 10;
-    string phoneNumberCountryCode = 11;
-    string landlineNumber = 12;
-    string landLineCode = 13;
-    bool whatsAppNotification = 14;
-    int32 ownerId = 15;
+}
+
+message AddressTable {
+    uint32 id = 1;
+    string country = 2;
+    uint32 entityId = 3;
+    string entityType = 4;
+    string state = 5;
+    string city = 6;
+    string district = 7;
+    string landmark = 8;
+    string address = 9;
+    double latitude = 10;
+    double longitude = 11;
+    int32 buildingNumber = 12;
+    string pinCode = 13;
+    bool exactLocation = 14;
+    string createdAt = 15;
+    string updatedAt = 16;
+}
+
+message RestaurantData {
+    string name = 1;
+    string phoneNumber = 2;
+    string phoneNumberCountryCode = 3;
+    string landlineNumber = 4;
+    string landLineCode = 5;
+    bool whatsAppNotifications = 6;
+    int32 ownerId = 7;
+    Address address = 8;
 }
 
 message CreateRestaurantRes{
@@ -39,4 +64,51 @@ message CreateRestaurantRes{
     message Data {
         optional int32 id = 1;
     }    
+}
+
+message UpdateBasicDetailsReq {
+    int32 id = 1;
+    RestaurantData data = 2;
+}
+
+message GetRestaurantBasicDetailsReq {
+    int32 id = 1;
+    int32 ownerId = 2;
+}
+
+message RestaurantBasicDetails {
+    string name = 1;
+    string phoneNumber = 2;
+    string phoneNumberCountryCode = 3;
+    string landlineNumber = 4;
+    string landLineCode = 5;
+    bool whatsAppNotifications = 6;
+    int32 ownerId = 7;
+    Address address = 8;
+    int32 id = 9;
+}
+
+message RestaurantTable {
+    uint32 id = 1;
+    string name = 2;
+    uint32 ownerId = 3;
+    string phoneNumber = 4;
+    string phoneNumberCountryCode = 5;
+    string landlineNumber = 6;
+    string landlineCode = 7;
+    int32 currentStep = 8;
+    bool isPhoneVerified = 9;
+    bool isLandlineVerified = 10;
+    bool isVerified = 11;
+    string status = 12;
+    bool whatsAppNotifications = 13;
+    repeated AddressTable address = 14;
+    string createdAt = 15;
+    string updatedAt = 16;
+}
+
+message GetRestaurantBasicDetailsRes {
+    required string message = 1;
+    required bool status = 2; 
+    RestaurantTable data = 3;
 }

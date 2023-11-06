@@ -1,4 +1,4 @@
-import { IResponse, IRestaurant } from './../interface';
+import { IResponse, ISaveBasicDetails } from './../interface';
 import { injectable } from 'tsyringe';
 import { SERVICES, GRPC_PORTS, PACKAGE_NAMES, RESTAURANT_METHODS } from '../constant';
 import { GrpcInitiate } from '../helper';
@@ -21,7 +21,17 @@ export class RestaurantGrpcService {
   }
 
   // Function to create a new restaurant
-  createRestaurant(request: IRestaurant): Promise<IResponse<{ id: number }>> {
+  createRestaurant(request: ISaveBasicDetails): Promise<IResponse<{ id: number }>> {
     return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.CREATE_RESTAURANT);
+  }
+
+  // Function to update a restaurant details
+  updateBasicDetails(request: { data: ISaveBasicDetails; id: number }): Promise<IResponse<any>> {
+    return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.UPDATE_BASIC_DETAILS);
+  }
+
+  // Function to get basic details of a restaurant along with address
+  getRestaurantBasicDetails(request: { id?: number; ownerId?: number }) {
+    return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.GET_RESTAURANT_BASIC_DETAILS);
   }
 }
