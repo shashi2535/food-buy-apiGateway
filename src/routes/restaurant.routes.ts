@@ -38,6 +38,25 @@ class Route implements Routes {
 
     // Get Basic Details of a restaurant
     this.router.get(this.routes.GET_BASIC_DETAILS, checkJwt, this.restaurantController.getRestaurantBasicDetails);
+
+    // Saving restaurant timings and types
+    this.router.post(
+      this.routes.SAVE_RESTAURANT_DETAILS,
+      checkJwt,
+      this.restaurantValidations.saveRestaurantDetails,
+      this.restaurantController.saveRestaurantDetails
+    );
+
+    // Get Restaurant Details
+    this.router.get(this.routes.GET_RESTAURANT_DETAILS, checkJwt, this.restaurantController.getRestaurantDetails);
+
+    // Update Restaurant Details
+    this.router.put(
+      this.routes.UPDATE_RESTAURANT_DETAILS,
+      checkJwt,
+      this.restaurantValidations.saveRestaurantDetails,
+      this.restaurantController.updateRestaurantDetails
+    );
   }
 }
 

@@ -34,4 +34,16 @@ export class RestaurantGrpcService {
   getRestaurantBasicDetails(request: { id?: number; ownerId?: number }) {
     return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.GET_RESTAURANT_BASIC_DETAILS);
   }
+
+  saveRestaurantDetails(request: any) {
+    return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.SAVE_RESTAURANT_DETAILS);
+  }
+
+  getRestaurantDetails(request: { id?: number; ownerId?: number; timings: boolean }) {
+    return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.GET_RESTAURANT_DETAILS);
+  }
+
+  updateRestaurantDetails(request: any) {
+    return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.UPDATE_RESTAURANT_DETAILS);
+  }
 }

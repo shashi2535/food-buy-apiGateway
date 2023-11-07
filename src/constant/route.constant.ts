@@ -21,6 +21,9 @@ export const RoutesConstants = {
     SAVE_BASIC_DETAILS: '/save-basic-details',
     UPDATE_BASIC_DETAILS: '/update-basic-details/:id',
     GET_BASIC_DETAILS: '/get-basic-details/:id',
+    SAVE_RESTAURANT_DETAILS: '/save-restaurant-details/:id',
+    GET_RESTAURANT_DETAILS: '/get-restaurant-details/:id',
+    UPDATE_RESTAURANT_DETAILS: '/update-restaurant-details/:id',
   },
   NOT_FOUND: '*',
 };

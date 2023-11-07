@@ -7,6 +7,10 @@ service RestaurantService {
     rpc createRestaurant(RestaurantData) returns (CreateRestaurantRes) {};
     rpc updateBasicDetails(UpdateBasicDetailsReq) returns (Response) {};
     rpc getRestaurantBasicDetails(GetRestaurantBasicDetailsReq) returns (GetRestaurantBasicDetailsRes) {};
+    rpc saveRestaurantDetails(SaveRestaurantDetailsReq) returns (Response) {};
+    rpc getRestaurantDetails( GetRestaurantDetailsReq ) returns (GetRestaurantDetailsRes) {};
+    rpc updateRestaurantDetails(SaveRestaurantDetailsReq) returns (Response) {}; 
+
 }
 
 message Empty {}
@@ -111,4 +115,57 @@ message GetRestaurantBasicDetailsRes {
     required string message = 1;
     required bool status = 2; 
     RestaurantTable data = 3;
+}
+
+message Shifts {
+    string openingTime = 1;
+    string closingTime =2;
+}
+
+message Timings {
+    string day = 1;
+    repeated Shifts shifts = 2;
+}
+
+message SaveRestaurantDetailsReq {
+    int32 id = 1;
+    int32 ownerId = 2;
+    repeated int32 kitchenType = 3;
+    repeated int32 outlets = 4;
+    repeated int32 cuisines = 5;
+    repeated Timings timings = 6;
+}
+
+message GetRestaurantDetailsReq {
+    int32 id = 1;
+    int32 ownerId = 2;
+    bool timings = 3;
+}
+
+message GetRestaurantDetailsData {
+    message RestaurantTimings {
+        int32 id = 1;
+        string createdAt = 2;
+        string updatedAt = 3;
+        bool is_active = 4;
+        int32 restaurantId = 5;
+        string day = 6;
+        string openingTime = 7;
+        string closingTime = 8;
+    }
+
+    int32 id = 1;
+    string createdAt = 2;
+    string updatedAt = 3;
+    int32 restaurantId = 4;
+    repeated int32 kitchenType = 5;
+    repeated int32 outlets = 6;
+    repeated int32 cuisines = 7;
+    repeated RestaurantTimings timings = 8;
+}
+
+message GetRestaurantDetailsRes {
+    required string message = 1;
+    required bool status = 2; 
+    GetRestaurantDetailsData data = 3;
 }
