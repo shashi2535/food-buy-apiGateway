@@ -1,7 +1,6 @@
 import { injectable } from 'tsyringe';
-import { SERVICES } from '../constant';
 import { GrpcInitiate } from '../helper';
-import { GRPC_PORTS, PACKAGE_NAMES, USER_METHODS } from '../constant';
+import { GRPC_PORTS, PACKAGE_NAMES, USER_METHODS, SERVICES } from '../constant';
 
 @injectable()
 export class UserGrpcService {
@@ -20,11 +19,20 @@ export class UserGrpcService {
   verifyOtp = (request: any): Promise<any> => {
     return this.grpc.handleClientMethod(request, USER_METHODS.VERIFY_OTP);
   };
-  resendOtp =  (request: any): Promise<any> => {
+  resendOtp = (request: any): Promise<any> => {
     return this.grpc.handleClientMethod(request, USER_METHODS.RESEND_OTP);
   };
-  loginOwner =  (request: any): Promise<any> => {
+  loginOwner = (request: any): Promise<any> => {
     return this.grpc.handleClientMethod(request, USER_METHODS.LOGIN_OWNER);
+  };
+
+  /**
+   * @description This function the user token returning user details
+   * @param request {token: string}
+   * @returns userDetails
+   */
+  verifyToken = (request: { token: string }) => {
+    return this.grpc.handleClientMethod(request, USER_METHODS.VERIFY_TOKEN);
   };
 }
 

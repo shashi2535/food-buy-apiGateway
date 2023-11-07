@@ -35,7 +35,7 @@ export class RabbitMqService {
       return obj;
     } catch (error) {
       this.connection = null;
-      if (error instanceof Error) throw error?.message;
+      // if (error instanceof Error) throw error?.message;
       console.log('RabbitMQ Error');
     }
   };
@@ -47,7 +47,8 @@ export class RabbitMqService {
       return { connection, channel };
     } catch (ex: any) {
       console.error(ex.message);
-      throw ex;
+      return ex;
+      // throw ex;
     }
   };
 

@@ -11,7 +11,7 @@ export class AuthController {
     try {
       const data = await userService.registerSeller(req.body);
       if(data.status === true && data.result.isEmailLogin === true){
-        this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
+        // this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
         return res.json({...data});
       }
       return res.json({
@@ -53,7 +53,7 @@ export class AuthController {
       console.log(data);
       if(data.status === true && data.result.isEmailLogin=== true){
         console.log('is email login>>>');
-        this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
+        // this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
         return res.json({
           status:data.status,
           message:data.message
@@ -94,7 +94,7 @@ export class AuthController {
       const data = await userService.loginOwner(req.body);
       if(data.status === true && data.result.isEmailLogin=== true){
         console.log('is email login>>>');
-        this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
+        // this.rabbitMqService.sendMessageToQueue('USER_NOTIFICATION',data.result);
         return res.json({
           status:data.status,
           message:data.message
