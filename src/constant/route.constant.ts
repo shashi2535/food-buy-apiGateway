@@ -25,5 +25,9 @@ export const RoutesConstants = {
     GET_RESTAURANT_DETAILS: '/get-restaurant-details/:id',
     UPDATE_RESTAURANT_DETAILS: '/update-restaurant-details/:id',
   },
+  MISC: {
+    DEFAULT: '/misc',
+    GET_ENTITY_TYPE: '/get-entity-type'
+  },
   NOT_FOUND: '*',
 };
