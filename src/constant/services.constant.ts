@@ -27,6 +27,8 @@ export enum USER_METHODS {
 export enum RESTAURANT_METHODS {
   CHECK_HEALTH = 'checkHealth',
   CREATE_RESTAURANT = 'createRestaurant',
+  UPDATE_BASIC_DETAILS = 'updateBasicDetails',
+  GET_RESTAURANT_BASIC_DETAILS = 'getRestaurantBasicDetails',
 }
 
 export enum ORDER_METHODS {

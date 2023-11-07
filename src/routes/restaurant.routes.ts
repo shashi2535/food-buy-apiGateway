@@ -20,13 +20,24 @@ class Route implements Routes {
   }
 
   private initializeRoutes(): void {
-    // Sign Up Route
+    // Save Basic Details
     this.router.post(
       this.routes.SAVE_BASIC_DETAILS,
       checkJwt,
       this.restaurantValidations.saveBasicDetails,
       this.restaurantController.createRestaurant
     );
+
+    // Update Basic Details of a restaurant
+    this.router.post(
+      this.routes.UPDATE_BASIC_DETAILS,
+      checkJwt,
+      this.restaurantValidations.updateBasicDetails,
+      this.restaurantController.updateRestaurantDetails
+    );
+
+    // Get Basic Details of a restaurant
+    this.router.get(this.routes.GET_BASIC_DETAILS, checkJwt, this.restaurantController.getRestaurantBasicDetails);
   }
 }
 
