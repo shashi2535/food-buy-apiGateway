@@ -1,0 +1,26 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+
+package misc;
+
+service MiscService {
+    rpc getEntityByType(getEntityByTypeReq) returns (getEntityByTypeRes) {};
+}
+
+message getEntityByTypeReq {
+    repeated string type = 1;
+}
+
+message getEntityByTypeRes{
+    string message = 1;
+    bool status = 2;
+    repeated Data data = 3;
+    message Data{
+        string type = 1;
+        repeated Types slugs = 2;
+    }
+    message Types {
+        int32 id = 1;
+        string slug = 2;
+    } 
+}

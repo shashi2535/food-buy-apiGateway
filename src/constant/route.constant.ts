@@ -20,5 +20,9 @@ export const RoutesConstants = {
     DEFAULT: '/restaurant',
     SAVE_BASIC_DETAILS: '/save-basic-details',
   },
+  MISC: {
+    DEFAULT: '/misc',
+    GET_ENTITY_TYPE: '/get-entity-type'
+  },
   NOT_FOUND: '*',
 };

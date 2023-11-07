@@ -6,11 +6,13 @@ export enum GRPC_PORTS {
 export enum PACKAGE_NAMES {
   USER = 'user',
   RESTAURANT = 'restaurant',
+  MISC = 'misc',
 }
 
 export enum SERVICES {
   USER_SERVICE = 'UserService',
   RESTAURANT_SERVICE = 'RestaurantService',
+  MISC_SERVICE = 'MiscService',
 }
 
 export enum USER_METHODS {
@@ -29,4 +31,8 @@ export enum RESTAURANT_METHODS {
 
 export enum ORDER_METHODS {
   CHECK_HEALTH = 'checkHealth',
+}
+
+export enum MISC_METHODS {
+  GET_ENTITY_TYPE = 'getEntityByType',
 }
