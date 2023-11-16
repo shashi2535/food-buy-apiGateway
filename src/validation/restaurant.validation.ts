@@ -33,7 +33,6 @@ export class RestaurantValidation extends BaseValidation {
           .min(1),
       })
     )
-    .length(7)
     .unique((a, b) => a.day === b.day);
 
   public saveBasicDetails = this.validateRequest(this.basicDetails.options({ presence: 'required' }).required());
