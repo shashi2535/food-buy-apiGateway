@@ -32,6 +32,7 @@ export enum RESTAURANT_METHODS {
   GET_RESTAURANT_DETAILS = 'getRestaurantDetails',
   UPDATE_RESTAURANT_DETAILS = 'updateRestaurantDetails',
   SAVE_RESTAURANT_DETAILS = 'saveRestaurantDetails',
+  GET_ALL_RESTAURANTS = 'getAllRestaurants',
 }
 
 export enum ORDER_METHODS {

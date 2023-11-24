@@ -57,6 +57,8 @@ class Route implements Routes {
       this.restaurantValidations.saveRestaurantDetails,
       this.restaurantController.updateRestaurantDetails
     );
+
+    this.router.get(this.routes.GET_RESTAURANT_LISTING, checkJwt, this.restaurantController.getAllRestaurants);
   }
 }
 

@@ -10,7 +10,7 @@ service RestaurantService {
     rpc saveRestaurantDetails(SaveRestaurantDetailsReq) returns (Response) {};
     rpc getRestaurantDetails( GetRestaurantDetailsReq ) returns (GetRestaurantDetailsRes) {};
     rpc updateRestaurantDetails(SaveRestaurantDetailsReq) returns (Response) {}; 
-
+    rpc getAllRestaurants(GetAllRestaurantsReq) returns (GetAllRestaurantsRes) {};    
 }
 
 message Empty {}
@@ -168,4 +168,12 @@ message GetRestaurantDetailsRes {
     required string message = 1;
     required bool status = 2; 
     GetRestaurantDetailsData data = 3;
+}
+
+message GetAllRestaurantsReq {
+    int32 ownerId = 1;
+}
+
+message GetAllRestaurantsRes {
+    
 }

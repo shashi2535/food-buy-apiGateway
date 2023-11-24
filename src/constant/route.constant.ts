@@ -24,10 +24,11 @@ export const RoutesConstants = {
     SAVE_RESTAURANT_DETAILS: '/save-restaurant-details/:id',
     GET_RESTAURANT_DETAILS: '/get-restaurant-details/:id',
     UPDATE_RESTAURANT_DETAILS: '/update-restaurant-details/:id',
+    GET_RESTAURANT_LISTING: '/get-restaurant-listing',
   },
   MISC: {
     DEFAULT: '/misc',
-    GET_ENTITY_TYPE: '/get-entity-type'
+    GET_ENTITY_TYPE: '/get-entity-type',
   },
   NOT_FOUND: '*',
 };

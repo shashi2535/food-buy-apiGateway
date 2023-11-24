@@ -105,4 +105,15 @@ export class RestaurantController {
     }
     return res.json(response);
   };
+
+  getAllRestaurants = async (req: Request<any>, res: Response) => {
+    let response = setInitialResponse();
+    try {
+      response = await this.restaurantService.getAllRestaurants({ ownerId: req?.user?.id });
+    } catch (err) {
+      console.log('RestaurantController::getAllRestaurants', (err as Error).message);
+      response.message = (err as Error).message;
+    }
+    return res.json(response);
+  };
 }

@@ -46,4 +46,8 @@ export class RestaurantGrpcService {
   updateRestaurantDetails(request: any) {
     return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.UPDATE_RESTAURANT_DETAILS);
   }
+
+  getAllRestaurants(request: { ownerId?: number }) {
+    return this.grpc.handleClientMethod(request, RESTAURANT_METHODS.GET_ALL_RESTAURANTS);
+  }
 }
